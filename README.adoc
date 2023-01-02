@@ -1,0 +1,3 @@
+== Reproducer for https://github.com/spring-projects/spring-data-jpa/issues/2743
+
+Fails to reproduce the issue referenced.
