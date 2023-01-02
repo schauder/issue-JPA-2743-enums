@@ -10,25 +10,26 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 @Entity
 public class Person {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	Long id;
 
-	private String username;
+	String username;
 
-	private String firstName;
+	String firstName;
 
-	private String lastName;
+	String lastName;
 
-	private String email;
+	String email;
 
 	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
 	@Column(name = "role", nullable = false)
 	@Enumerated(EnumType.STRING)
-	private Collection<Role> roles;
+	Collection<Role> roles = new HashSet<>();
 
 }
