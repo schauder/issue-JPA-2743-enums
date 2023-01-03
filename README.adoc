@@ -7,3 +7,5 @@ Reproduction is sporadic. Therefore one needs to run the tests multiple times.
 
 It seems that the Spring based setup makes the error more likely. 10-20 runs of the tests in IntelliJ are sufficient to reproduce the issue reliably for me.
 For the pure Hibernate variant 10-20 runs aren't always enough it seems, but the error occures eventually.
+
+Since the issue can be reproduced with Hibernate alone it was submitted as a Hibernate bug: https://hibernate.atlassian.net/browse/HHH-15968.
