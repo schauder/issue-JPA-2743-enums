@@ -4,11 +4,15 @@ import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
+import java.util.Set;
 
 @SpringBootTest
 class Issue2743EnumsApplicationTests {
+
 	@Autowired
 	Persons persons;
 
@@ -16,17 +20,9 @@ class Issue2743EnumsApplicationTests {
 	EntityManager em;
 
 	@Test
-	void saveAndLoad() {
-		Person jens = new Person();
-		jens.firstName = "Jens";
-		jens.lastName = "Schauder";
-		jens.roles.add(Role.ADMIN);
-		jens.roles.add(Role.CUSTOMER);
-		jens = persons.save(jens);
-		persons.flush();
-		em.clear();
-
-		Optional<Person> reloaded = persons.findById(jens.id);
+	void test() {
+		Page<Person> page = persons.searchPersons(Set.of(Role.CUSTOMER), Set.of(Role.CUSTOMER), Pageable.unpaged());
+		page.getContent();
 	}
 
 }
