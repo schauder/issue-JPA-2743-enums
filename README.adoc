@@ -1,3 +1,5 @@
 == Reproducer for https://github.com/spring-projects/spring-data-jpa/issues/2743
 
-Fails to reproduce the issue referenced.
+Reproduces the issue using Spring Data or JPA directly.
+
+Reproduction is sporadic with a probability of about 0.1 to 0.5. Therefore one needs to run the tests multiple times
