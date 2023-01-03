@@ -10,9 +10,11 @@ import java.util.Set;
 
 public interface Persons extends JpaRepository<Person, Long> {
 
-    @Query("SELECT DISTINCT p from Person AS p JOIN p.roles role" +
-            " WHERE role IN (:visibleRoles) AND " +
-            "(:filterByRole IS NULL OR role IN (:filterByRole))")
+    String QUERY = "SELECT DISTINCT p from Person AS p JOIN p.roles role" +
+            " WHERE role IN (?1) AND " +
+            "(?2 IS NULL OR role IN (?2))";
+
+    @Query(QUERY)
     Page<Person> searchPersons(@Param("visibleRoles") Set<Role> visibleRoles,
                                @Param("filterByRole") Set<Role> filterByRole,
                                Pageable pageable);
