@@ -1,5 +1,9 @@
 == Reproducer for https://github.com/spring-projects/spring-data-jpa/issues/2743
 
 Reproduces the issue using Spring Data or JPA directly.
+The hibernate module containes and independent reproducer based on Hibernates reproducer templates.
 
-Reproduction is sporadic with a probability of about 0.1 to 0.5. Therefore one needs to run the tests multiple times
+Reproduction is sporadic. Therefore one needs to run the tests multiple times.
+
+It seems that the Spring based setup makes the error more likely. 10-20 runs of the tests in IntelliJ are sufficient to reproduce the issue reliably for me.
+For the pure Hibernate variant 10-20 runs aren't always enough it seems, but the error occures eventually.
